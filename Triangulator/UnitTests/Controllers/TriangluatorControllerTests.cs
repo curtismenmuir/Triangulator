@@ -201,7 +201,7 @@ namespace UnitTests
             {
                 var temp = new TriangulatorController();
                 var result = temp.GetCoordinates(invalidTriangleName);
-                string[] failMessage = new string[] { "Invalid Triangle" };
+                string[] failMessage = new string[] { "Invalid Triangle Name" };
                 Assert.AreEqual(result.ToString(), failMessage.ToString());
             }
         }
