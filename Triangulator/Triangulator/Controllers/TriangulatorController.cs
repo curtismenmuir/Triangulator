@@ -13,16 +13,16 @@ namespace Triangulator.Controllers
     {
         // GET api/triangulator/A5
         [HttpGet("{triangleName}")]
-        public string GetCoordinates(string triangleName)
+        public IEnumerable<string> GetCoordinates(string triangleName)
         {
             if (TriangleFunctions.VerifyTriangleName(triangleName.ToCharArray()))
             {
                 Triangle triangle = new Triangle(triangleName);
-                return "Valid triangle";
+                return new string[] { triangle.TriangleName, triangle.Coordinates };
             }
             else
             {
-                return "Invalid triangle";
+                return new string[] { "Invalid triangle" };
             }
         }
     }

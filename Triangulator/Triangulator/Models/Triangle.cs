@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Triangulator.Lib;
 
 namespace Triangulator.Models
 {
@@ -13,7 +14,7 @@ namespace Triangulator.Models
         public Triangle(string triangleName)
         {
             this.TriangleName = triangleName;
-            // this.Coordinates =  TriangleFunctions.GenerateCoordinates(TriangleName);
+            this.Coordinates =  TriangleFunctions.GenerateCoordinates(TriangleName.ToCharArray());
         }
     }
 }
