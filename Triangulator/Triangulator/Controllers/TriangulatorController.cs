@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Triangulator.Lib;
+using Triangulator.Models;
 
 namespace Triangulator.Controllers
 {
@@ -12,29 +13,32 @@ namespace Triangulator.Controllers
     {
         // GET api/triangulator/GetCoordinates/A5
         [HttpGet("{triangleName}")]
-        public IEnumerable<string> GetCoordinates(string triangleName)
+        public ActionResult GetCoordinates(string triangleName) //ActionResult
         {
             if (TriangleFunctions.VerifyTriangleName(triangleName.ToCharArray()))
             {
-                return new string[] { triangleName, TriangleFunctions.GenerateCoordinates(triangleName.ToCharArray()) };
+                Triangle triangle = new Triangle(triangleName);
+                return Ok(triangle);
             }
             else
             {
-                return new string[] { "Invalid Triangle Name" };
+                return BadRequest("Invalid Triangle Name");
             }
         }
+        
 
         // GET api/triangulator/GetTriangleName/(0,10),(0,0),(10,10)
         [HttpGet("{coordinates}")]
-        public IEnumerable<string> GetTriangleName(string coordinates)
+        public ActionResult GetTriangleName(string coordinates)
         {
             if (TriangleFunctions.VerifyCoordinates(coordinates))
             {
-                return new string[] { TriangleFunctions.GenerateTriangleName(coordinates), coordinates };
+                Triangle triangle = new Triangle(coordinates);
+                return Ok(triangle);
             }
             else
             {
-                return new string[] { "Invalid Triangle Coordinates" };
+                return BadRequest("Invalid Triangle Coordinates");
             }
         }
     }

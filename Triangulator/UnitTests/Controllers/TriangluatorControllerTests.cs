@@ -1,6 +1,8 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Triangulator.Controllers;
+using Microsoft.AspNetCore.Mvc;
+using Triangulator.Models;
 
 namespace UnitTests
 {
@@ -191,18 +193,21 @@ namespace UnitTests
 
             for (int i = 0; i < (validTriangleNames.Length - 1); i++)
             {
-                var temp = new TriangulatorController();
-                var result = temp.GetCoordinates(validTriangleNames[i]);
-                string[] successMessage = new string[] { validTriangleNames[i], validTriangleCoordinates[i] };
-                Assert.AreEqual(result.ToString(), successMessage.ToString());
+                var controller = new TriangulatorController();
+                var result = controller.GetCoordinates(validTriangleNames[i]);
+                var okObjectResult = result as OkObjectResult;
+                Triangle triangle = okObjectResult.Value as Triangle; 
+                Assert.AreEqual(triangle.TriangleName, validTriangleNames[i]);
+                Assert.AreEqual(triangle.Coordinates, validTriangleCoordinates[i]);
             }
 
             foreach (var invalidTriangleName in invalidTriangleNames)
             {
-                var temp = new TriangulatorController();
-                var result = temp.GetCoordinates(invalidTriangleName);
-                string[] failMessage = new string[] { "Invalid Triangle Name" };
-                Assert.AreEqual(result.ToString(), failMessage.ToString());
+                var controller = new TriangulatorController();
+                var result = controller.GetCoordinates(invalidTriangleName);
+                var badRequestResult = result as BadRequestObjectResult;
+                string resultMessage = badRequestResult.Value as string;
+                Assert.AreEqual(resultMessage, "Invalid Triangle Name");
             }
         }
         
@@ -331,18 +336,21 @@ namespace UnitTests
 
             for (int i = 0; i < (validTriangleCoordinates.Length - 1); i++)
             {
-                var temp = new TriangulatorController();
-                var result = temp.GetTriangleName(validTriangleCoordinates[i]);
-                string[] successMessage = new string[] { validTriangleNamesCapsOnly[i], validTriangleCoordinates[i] };
-                Assert.AreEqual(result.ToString(), successMessage.ToString());
+                var controller = new TriangulatorController();
+                var result = controller.GetTriangleName(validTriangleCoordinates[i]);
+                var okObjectResult = result as OkObjectResult;
+                Triangle triangle = okObjectResult.Value as Triangle;
+                Assert.AreEqual(triangle.TriangleName, validTriangleNamesCapsOnly[i]);
+                Assert.AreEqual(triangle.Coordinates, validTriangleCoordinates[i]);
             }
 
             foreach (var invalidTriangleCoordinate in invalidTriangleCoordinates)
             {
-                var temp = new TriangulatorController();
-                var result = temp.GetTriangleName(invalidTriangleCoordinate);
-                string[] failMessage = new string[] { "Invalid Triangle Coordinates" };
-                Assert.AreEqual(result.ToString(), failMessage.ToString());
+                var controller = new TriangulatorController();
+                var result = controller.GetTriangleName(invalidTriangleCoordinate);
+                var badRequestResult = result as BadRequestObjectResult;
+                string resultMessage = badRequestResult.Value as string;
+                Assert.AreEqual(resultMessage, "Invalid Triangle Coordinates");
             }
         }
     }
