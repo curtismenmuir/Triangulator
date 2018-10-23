@@ -22,9 +22,9 @@ namespace Triangulator.Lib
         {
             return Regex.IsMatch(number.ToString(), @"^[0-2]+$"); // Regex for numbers 0-2 
         }
-        public static bool ValidateCoordinates(string coordinate)
+        public static bool ValidateCoordinateCharacters(string coordinate)
         {
-            return Regex.IsMatch(coordinate, @"^[0-6,()]+$"); // Regex for numbers 1-9
+            return Regex.IsMatch(coordinate, @"^[0-6,()]+$"); // Regex for numbers 0-6 aswell as ',' '(' ')'
         }
     }
 }

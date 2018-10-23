@@ -26,13 +26,14 @@ namespace Triangulator.Lib
 
         public static bool VerifyCoordinates(string coordinates)
         {
-            if (RegexValidators.ValidateCoordinates(coordinates))
+            if (RegexValidators.ValidateCoordinateCharacters(coordinates))
             {
                 coordinates = coordinates.Replace("(", string.Empty);
                 coordinates = coordinates.Replace(")", string.Empty);
 
                 string[] splitCoordinates = coordinates.Split(',');
-
+                
+                // Check there is 6 coordinates
                 if (splitCoordinates.Length != minMaxTriangleCoordinates)
                 {
                     return false;
@@ -42,6 +43,15 @@ namespace Triangulator.Lib
 
                 for (int i = 0; i < splitCoordinates.Length; i++)
                 {
+                    // Check if last character of the coordinate is 0 and coordinate length is under 3
+                    if (splitCoordinates[i].Length == 1 && !splitCoordinates[i][0].Equals('0'))
+                    {
+                        return false;
+                    }
+                    else if (!splitCoordinates[i][splitCoordinates[i].Length - 1].Equals('0') || splitCoordinates[i].Length > 2)
+                    {
+                        return false;
+                    }
                     Int32.TryParse(splitCoordinates[i], out convertedCoordinates[i]);
                 }
                 
@@ -52,7 +62,7 @@ namespace Triangulator.Lib
                     (convertedCoordinates[0] != maxX && convertedCoordinates[2] == maxX && convertedCoordinates[4] != maxX) ||
                     (convertedCoordinates[0] != maxX && convertedCoordinates[2] != maxX && convertedCoordinates[4] == maxX)) 
                 {
-                    // validate X coordinates
+                    // validate X coordinates - 1 should be 10 higher than the other 2
                     if (convertedCoordinates[0] == convertedCoordinates[2] || convertedCoordinates[0] == convertedCoordinates[4]) // if X1 == X2 or X3
                     {
                         if (!(convertedCoordinates[2] == (convertedCoordinates[0] + 10)) && !(convertedCoordinates[4] == (convertedCoordinates[0] + 10))) // if (X1 + 10) != X2 or X3 then invalid
@@ -60,7 +70,7 @@ namespace Triangulator.Lib
                             return false;
                         }
                     }
-                    else
+                    else // X1 must be the 
                     {
                         if (!(convertedCoordinates[2] == convertedCoordinates[4]) || !(convertedCoordinates[0] == (convertedCoordinates[2] + 10))) // if X2 != X3 OR X1 != (X2 + 10) then invalid
                         {
@@ -68,7 +78,7 @@ namespace Triangulator.Lib
                         }
                     }
 
-                    // validate Y coordinates
+                    // validate Y coordinates - 1 should be 10 less than the other 2
                     if (convertedCoordinates[1] == convertedCoordinates[3] || convertedCoordinates[1] == convertedCoordinates[5]) // if Y1 == Y2 or Y3
                     {
                         if (!(convertedCoordinates[3] == (convertedCoordinates[1] - 10)) && !(convertedCoordinates[5] == (convertedCoordinates[1] - 10))) // if (Y1 - 10) != Y2 or Y3 then invalid
@@ -87,7 +97,7 @@ namespace Triangulator.Lib
                 }
                 else // Else even triangle (eg A2, A6)
                 {
-                    // validate X coordinates
+                    // validate X coordinates - 1 should be 10 less than the other 2
                     if (convertedCoordinates[0] == convertedCoordinates[2] || convertedCoordinates[0] == convertedCoordinates[4]) // if X1 == X2 or X3
                     {
                         if (!(convertedCoordinates[2] == (convertedCoordinates[0] - 10)) && !(convertedCoordinates[4] == (convertedCoordinates[0] - 10))) // if (X1 - 10) != X2 or X3 then invalid
@@ -103,7 +113,7 @@ namespace Triangulator.Lib
                         }
                     }
 
-                    // validate Y coordinates
+                    // validate Y coordinates - 1 should be 10 higher than the other 2
                     if (convertedCoordinates[1] == convertedCoordinates[3] || convertedCoordinates[1] == convertedCoordinates[5]) // if Y1 == Y2 or Y3
                     {
                         if (!(convertedCoordinates[3] == (convertedCoordinates[1] + 10)) && !(convertedCoordinates[5] == (convertedCoordinates[1] + 10))) // if (Y1 + 10) != Y2 or Y3 then invalid
