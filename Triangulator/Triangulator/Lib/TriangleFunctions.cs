@@ -200,10 +200,10 @@ namespace Triangulator.Lib
             return Char.ToUpper(letter) - 64; // Minus 64 to convert A-F (CAPS) to 1-6
         }
 
-        public static char ConvertNumberToLetter(int num)
+        public static char ConvertNumberToLetter(int number)
         {
-            num = (num / 10) + 64; // Add 64 to convert 1-6 to A-F
-            return (char) num;
+            number = (number / 10) + 64; // Add 64 to convert 1-6 to A-F
+            return (char) number;
         }
     } 
 }

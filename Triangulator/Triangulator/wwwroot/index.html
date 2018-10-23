@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Triangulator</title>
+</head>
+<body>
+    <h1>Triangulator</h1>
+
+    <div>
+        <input type="button" value="search" onclick="getTriangle();" />
+        <p id="triangle" />
+    </div>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+
+    <script>
+        var uri = 'api/triangulator/GetCoordinates/X12';
+        function getTriangle() {
+            $.getJSON(uri)
+                .done(function (triangle) {
+                    $('#triangle').text(triangle.triangleName + ': ' + triangle.coordinates);
+                })
+                .fail(function (jqXHR, textStatus, err) {
+                    $('#triangle').text('Error: ' + err);
+                });
+        }
+    </script>
+</body>
+</html>
