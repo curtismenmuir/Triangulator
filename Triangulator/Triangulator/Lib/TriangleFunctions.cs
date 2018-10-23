@@ -70,7 +70,7 @@ namespace Triangulator.Lib
                             return false;
                         }
                     }
-                    else // X1 must be the 
+                    else // X2 and X3 must be equal and X1 must be 10 higher
                     {
                         if (!(convertedCoordinates[2] == convertedCoordinates[4]) || !(convertedCoordinates[0] == (convertedCoordinates[2] + 10))) // if X2 != X3 OR X1 != (X2 + 10) then invalid
                         {
@@ -86,7 +86,7 @@ namespace Triangulator.Lib
                             return false;
                         }
                     }
-                    else
+                    else // Y2 and Y3 must be equal and Y1 must be 10 lower
                     {
                         if (!(convertedCoordinates[3] == convertedCoordinates[5]) || !(convertedCoordinates[1] == (convertedCoordinates[3] - 10))) // if Y2 != Y3 OR Y1 != (Y2 - 10) then invalid
                         {
@@ -105,7 +105,7 @@ namespace Triangulator.Lib
                             return false;
                         }
                     }
-                    else
+                    else // X2 and X3 must be equal and X1 must be 10 lower
                     {
                         if (!(convertedCoordinates[2] == convertedCoordinates[4]) || !(convertedCoordinates[0] == (convertedCoordinates[2] - 10))) // if X2 != X3 OR X1 != (X2 - 10) then invalid
                         {
@@ -121,7 +121,7 @@ namespace Triangulator.Lib
                             return false;
                         }
                     }
-                    else
+                    else // Y2 and Y3 must be equal and Y1 must be 10 higher
                     {
                         if (!(convertedCoordinates[3] == convertedCoordinates[5]) || !(convertedCoordinates[1] == (convertedCoordinates[3] + 10))) // if Y2 != Y3 OR Y1 != (Y2 + 10) then invalid
                         {
