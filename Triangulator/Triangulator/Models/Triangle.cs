@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Triangulator.Lib;
+﻿using Triangulator.Lib;
 
 namespace Triangulator.Models
 {
@@ -11,6 +7,10 @@ namespace Triangulator.Models
         public string TriangleName { get; private set; }
         public string Coordinates { get; private set; }
 
+        /// <summary>
+        /// Generates a Triangle from a valid TriangleName or valid set of Coordinates
+        /// </summary>
+        /// <param name="input"></param>
         public Triangle(string input)
         {
             if (input.Length < 4)

@@ -1,21 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Triangulator.Lib
 {
     public static class TriangleFunctions
     {
         private const int minMaxTriangleCoordinates = 6;
-        
+
+        /// <summary>
+        /// Verifies the validity of a given TriangleName 
+        /// </summary>
+        /// <param name="triangleName"></param>
+        /// <returns>True / False</returns>
         public static bool VerifyTriangleName(char[] triangleName)
         {
             if (triangleName.Count() > 1 && triangleName.Count() < 4)
             {
                 if (RegexValidators.ValidateLetter(triangleName[0]) && RegexValidators.Validate1stNumber(triangleName[1]))
                 {
-                    if (triangleName.Count() == 2 || RegexValidators.Validate2ndNumber(triangleName[2]))
+                    Int32.TryParse(triangleName[1].ToString(), out int firstNum);
+
+                    if (triangleName.Count() == 2 || (RegexValidators.Validate2ndNumber(triangleName[2]) && firstNum < 2))
                     {
                         return true;
                     }
@@ -24,6 +29,11 @@ namespace Triangulator.Lib
             return false;
         }
 
+        /// <summary>
+        /// Verifies the validity of a given set of coordinates
+        /// </summary>
+        /// <param name="coordinates"></param>
+        /// <returns>True / False</returns>
         public static bool VerifyCoordinates(string coordinates)
         {
             if (RegexValidators.ValidateCoordinateCharacters(coordinates))
@@ -134,6 +144,11 @@ namespace Triangulator.Lib
             return false;
         }
 
+        /// <summary>
+        /// Generates the coordinates of a triangle (60 x 60 grid) from a valid triangleName 
+        /// </summary>
+        /// <param name="triangleName"></param>
+        /// <returns>string Coordinates</returns>
         public static string GenerateCoordinates(char[] triangleName)
         {
             int maxX;
@@ -164,6 +179,11 @@ namespace Triangulator.Lib
             }
         }
 
+        /// <summary>
+        /// Generates the name of a triangle from a set of valid coordinates (60 x 60 grid )
+        /// </summary>
+        /// <param name="coordinates"></param>
+        /// <returns>string TriangleName</returns>
         public static string GenerateTriangleName(string coordinates)
         {
             coordinates = coordinates.Replace("(", string.Empty);
@@ -195,11 +215,21 @@ namespace Triangulator.Lib
             return rowLetter + columnNumber.ToString();
         }
 
+        /// <summary>
+        /// Converts the letters A-F to the numbers 1-6
+        /// </summary>
+        /// <param name="letter"></param>
+        /// <returns>int 1-6</returns>
         public static int ConvertLetterToNumber(char letter)
         {
-            return Char.ToUpper(letter) - 64; // Minus 64 to convert A-F (CAPS) to 1-6
+            return Char.ToUpper(letter) - 64; // Minus 64 to convert A-F to 1-6
         }
 
+        /// <summary>
+        /// Converts the numbers 1-6 to the letters A-F
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns>char A-F</returns>
         public static char ConvertNumberToLetter(int number)
         {
             number = (number / 10) + 64; // Add 64 to convert 1-6 to A-F

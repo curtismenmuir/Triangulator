@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Triangulator.Lib;
 using Triangulator.Models;
 
@@ -11,9 +7,14 @@ namespace Triangulator.Controllers
     [Route("api/[controller]/[action]")]
     public class TriangulatorController : ControllerBase
     {
-        // GET api/triangulator/GetCoordinates/A5
+        /// <summary>
+        /// API Controller which generates the triangle coordinates from a triangleName.
+        /// Usage: GET ../api/triangulator/GetCoordinates/A5
+        /// </summary>
+        /// <param name="triangleName"></param>
+        /// <returns>Result(Triangle)</returns>
         [HttpGet("{triangleName}")]
-        public ActionResult GetCoordinates(string triangleName) //ActionResult
+        public ActionResult GetCoordinates(string triangleName)
         {
             if (TriangleFunctions.VerifyTriangleName(triangleName.ToCharArray()))
             {
@@ -25,9 +26,13 @@ namespace Triangulator.Controllers
                 return BadRequest("Invalid Triangle Name");
             }
         }
-        
 
-        // GET api/triangulator/GetTriangleName/(0,10),(0,0),(10,10)
+        /// <summary>
+        /// API Controller which generates the triangle name from a set of coordinates
+        /// Usgae: GET ../api/triangulator/GetTriangleName/(0,10),(0,0),(10,10)
+        /// </summary>
+        /// <param name="coordinates"></param>
+        /// <returns>Result(Triangle)</returns>
         [HttpGet("{coordinates}")]
         public ActionResult GetTriangleName(string coordinates)
         {

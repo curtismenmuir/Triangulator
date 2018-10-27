@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Triangulator.Lib;
 
 namespace UnitTests.Lib
@@ -179,6 +178,7 @@ namespace UnitTests.Lib
         public void VerifyTriangleNameTest()
         {
             string[] invalidTriangleNames = new string[] { "g1", "g2", "g3", "g4", "g5", "g6", "g7", "g8", "g9", "g10", "g11", "g12",
+                                                               "A01", "a20", "a21", "A22", "A30", "d41", "C50", "F62", "d71", "b81", "E92",
                                                                "G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8", "G9", "G10", "G11", "G12",
                                                                "A", "ab", "ABC", "a111", "1A1", "1a", "11A", "aa1", "A00", "a01", "AAA",
                                                                "b", "BC", "bcd", "B111", "1b1", "1B", "11b", "BB1", "b00", "B01", "bbb",

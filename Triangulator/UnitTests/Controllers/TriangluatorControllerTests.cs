@@ -1,4 +1,3 @@
-using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Triangulator.Controllers;
 using Microsoft.AspNetCore.Mvc;
