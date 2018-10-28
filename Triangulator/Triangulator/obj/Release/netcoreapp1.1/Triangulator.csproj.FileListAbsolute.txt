@@ -1,0 +1,9 @@
+C:\Users\curti\Documents\GitHub\Triangulator\Triangulator\Triangulator\bin\Release\netcoreapp1.1\Triangulator.deps.json
+C:\Users\curti\Documents\GitHub\Triangulator\Triangulator\Triangulator\bin\Release\netcoreapp1.1\Triangulator.runtimeconfig.json
+C:\Users\curti\Documents\GitHub\Triangulator\Triangulator\Triangulator\bin\Release\netcoreapp1.1\Triangulator.runtimeconfig.dev.json
+C:\Users\curti\Documents\GitHub\Triangulator\Triangulator\Triangulator\bin\Release\netcoreapp1.1\Triangulator.dll
+C:\Users\curti\Documents\GitHub\Triangulator\Triangulator\Triangulator\bin\Release\netcoreapp1.1\Triangulator.pdb
+C:\Users\curti\Documents\GitHub\Triangulator\Triangulator\Triangulator\obj\Release\netcoreapp1.1\Triangulator.csprojResolveAssemblyReference.cache
+C:\Users\curti\Documents\GitHub\Triangulator\Triangulator\Triangulator\obj\Release\netcoreapp1.1\Triangulator.AssemblyInfo.cs
+C:\Users\curti\Documents\GitHub\Triangulator\Triangulator\Triangulator\obj\Release\netcoreapp1.1\Triangulator.dll
+C:\Users\curti\Documents\GitHub\Triangulator\Triangulator\Triangulator\obj\Release\netcoreapp1.1\Triangulator.pdb

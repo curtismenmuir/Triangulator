@@ -6,4 +6,3 @@ C:\Users\curti\Documents\GitHub\Triangulator\Triangulator\Triangulator\obj\Debug
 C:\Users\curti\Documents\GitHub\Triangulator\Triangulator\Triangulator\bin\Debug\netcoreapp1.1\Triangulator.pdb
 C:\Users\curti\Documents\GitHub\Triangulator\Triangulator\Triangulator\obj\Debug\netcoreapp1.1\Triangulator.dll
 C:\Users\curti\Documents\GitHub\Triangulator\Triangulator\Triangulator\obj\Debug\netcoreapp1.1\Triangulator.pdb
-C:\Users\curti\Documents\GitHub\Triangulator\Triangulator\Triangulator\obj\Debug\netcoreapp1.1\Triangulator.csprojResolveAssemblyReference.cache
